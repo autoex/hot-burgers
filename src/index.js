@@ -1,8 +1,9 @@
 import * as ReactDOM from "react-dom";
-import App from "./App";
 import React from "react";
+import Landing from "./components/Landing";
+import './css/style.css'
 
 ReactDOM.render(
-    <App />,
+    <Landing />,
     document.getElementById('root')
 );
