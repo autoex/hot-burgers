@@ -3,7 +3,9 @@ import React from 'react';
 class MenuAdmin extends React.Component {
     render() {
         return (
-            `MenuAdmin`
+            <div className='menu-admin'>
+                <h2>Управление меню</h2>
+            </div>
         )
     }
 }
