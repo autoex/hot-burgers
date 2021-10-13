@@ -2,22 +2,49 @@ import React, {Component} from 'react';
 import restaurants from "../sample-restaurants";
 
 class Landing extends Component {
+    state = {
+        display: false,
+        title: '',
+        url: ''
+    };
+    displayList = () => {
+        this.setState({
+            display: !this.state.display
+        })
+    };
+    setCurrentRestaurant=(restName, restUrl)=> {
+
+
+        this.setState({
+            title: restName,
+            url: restUrl,
+            display: false
+        });
+
+    };
+    goToRestaurant =(restUrl)=> {
+        console.log(restUrl)
+    }
+
     render() {
         return (<>
                 <div className='restaurant_select'>
                     <div className='restaurant_select_top'>
-                        <div className='restaurant_select_top-header font-effect-outline'>Выбери ресторан</div>
+                        <div className='restaurant_select_top-header font-effect-outline'
+                             onClick={this.displayList}>
+                            {this.state.title ? this.state.title : `Выбери ресторан`}
+                        </div>
                         <div className="arrow_picker">
                             <div className="arrow_picker-up"></div>
                             <div className="arrow_picker-down"></div>
                         </div>
                     </div>
-                    <div className="restaurant_select_bottom">
+                    {this.state.display && <div className="restaurant_select_bottom">
                         <ul>
-                            {restaurants.map(rest=><li key={rest.id}>{rest.title}</li>)}
+                            {restaurants.map(rest => <li key={rest.id} onClick={()=>this.setCurrentRestaurant(rest.title , rest.url)}>{rest.title}</li>)}
                         </ul>
-                    </div>
-                    <button>Перейти в ресторан</button>
+                    </div>}
+                    {(this.state.title && !this.state.display)  && <button onClick={()=>this.goToRestaurant(this.state.url)}>Перейти в ресторан</button>}
                 </div>
             </>
         );
