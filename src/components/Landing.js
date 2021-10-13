@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import restaurants from "../sample-restaurants";
 
 class Landing extends Component {
+
     state = {
         display: false,
         title: '',
@@ -23,8 +24,8 @@ class Landing extends Component {
 
     };
     goToRestaurant =(restUrl)=> {
-        console.log(restUrl)
-    }
+        this.props.history.push(`/restaurant/${restUrl}`)
+    };
 
     render() {
         return (<>
