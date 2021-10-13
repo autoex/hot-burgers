@@ -1,7 +1,6 @@
 import React from 'react';
 
-function Header() {
-    return (
+const Header=()=> (
         <header className="top">
             <div className="wrap">
                 <div className="header-content">
@@ -19,7 +18,7 @@ function Header() {
                 </div>
             </div>
         </header>
-    )
-}
+    );
+
 
 export default Header;
