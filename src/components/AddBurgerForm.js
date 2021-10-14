@@ -11,7 +11,7 @@ class AddBurgerForm extends Component {
         event.preventDefault();
         const burger = {
             name: this.nameRef.current.value,
-            price: +this.priceRef.current.value,
+            price: +this.priceRef.current.value || 0,
             status: this.statusRef.current.value,
             desc: this.descRef.current.value,
             image: this.imageRef.current.value,
