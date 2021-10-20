@@ -2,6 +2,7 @@ import React from 'react';
 
 const BurgersItem = ({details}) => {
     const {image, name, price, desc, status} = details;
+    const isAvailable = status === 'available';
     return (
         <li className='menu-burger'>
             <div className="image-container">
@@ -17,7 +18,7 @@ const BurgersItem = ({details}) => {
                 <p>
                     {desc}
                 </p>
-                <button className="buttonOrder">Заказать</button>
+                <button className="buttonOrder" disabled={!isAvailable}>{!isAvailable ?  'Временно нет' : 'Заказать'}</button>
             </div>
         </li>
     );
