@@ -1,4 +1,5 @@
 import React from 'react';
+import Shipment from "./Shipment";
 
 class Order extends React.Component {
     renderOrder = (item) => {
@@ -31,13 +32,10 @@ class Order extends React.Component {
                 <ul className='order'>
                     {orderIds.map(this.renderOrder)}
                 </ul>
-                <div className="total">
-                    <div className="total_wrap">
-                        <div className="total_wrap-final">
-                            Итого: {totalCost}
-                        </div>
-                    </div>
-                </div>
+                {totalCost > 0 ?
+                    <Shipment totalCost={totalCost}/>
+                    :
+                    (<div className='nothingSelected'>Выберите блюда и добавте к заказу</div> )  }
             </div>
         )
     }
