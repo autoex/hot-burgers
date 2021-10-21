@@ -10,21 +10,30 @@ class App extends Component {
         burgers: {},
         order: {}
     };
-    addBurger =(burger)=> {
+    addBurger = (burger) => {
         const burgers = {...this.state.burgers};
         burgers[`burger${Date.now()}`] = burger;
         this.setState({burgers})
     };
-    addAllBurgers =()=> this.setState({burgers:{...this.state.burgers, ...sampleBurgers}});
+    addAllBurgers = () => this.setState({burgers: {...this.state.burgers, ...sampleBurgers}});
+    addToOrder = (key) => {
+        const order = {...this.state.order};
+        order[key] = order[key] + 1 || 1;
+        this.setState({...this.state, order})
+
+
+    }
 
     render() {
         return (
             <div className='burger-paradise'>
                 <div className="menu">
                     <Header/>
-                    <BurgersList burgers={this.state.burgers}/>
+                    <BurgersList burgers={this.state.burgers} addToOrder={this.addToOrder}/>
                 </div>
-                <Order/>
+                <Order burgers={this.state.burgers}
+                       order={this.state.order}
+                />
                 <MenuAdmin addBurger={this.addBurger} addAllBurgers={this.addAllBurgers}/>
 
             </div>

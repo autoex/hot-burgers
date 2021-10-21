@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BurgersItem = ({details}) => {
+const BurgersItem = ({details, addToOrder,id}) => {
     const {image, name, price, desc, status} = details;
     const isAvailable = status === 'available';
     return (
@@ -18,7 +18,7 @@ const BurgersItem = ({details}) => {
                 <p>
                     {desc}
                 </p>
-                <button className="buttonOrder" disabled={!isAvailable}>{!isAvailable ?  'Временно нет' : 'Заказать'}</button>
+                <button onClick={()=>addToOrder(id)} className="buttonOrder" disabled={!isAvailable}>{!isAvailable ?  'Временно нет' : 'Заказать'}</button>
             </div>
         </li>
     );
