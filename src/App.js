@@ -14,10 +14,20 @@ class App extends Component {
 
     componentDidMount() {
         const {params} = this.props.match;
+        const localstorageRef = localStorage.getItem(params.restURL);
+        if (localstorageRef) this.setState({order: JSON.parse(localstorageRef)});
         this.ref = base.syncState(`${params.restURL}/burgers`, {
             context: this,
             state: 'burgers'
-        })
+        });
+
+
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {params} = this.props.match;
+        localStorage.setItem(params.restURL, JSON.stringify(this.state.order))
+
     }
 
     componentWillUnmount() {
@@ -34,7 +44,7 @@ class App extends Component {
     addToOrder = (key) => {
         const order = {...this.state.order};
         order[key] = order[key] + 1 || 1;
-        this.setState({...this.state, order})
+        this.setState({...this.state, order});
 
 
     }

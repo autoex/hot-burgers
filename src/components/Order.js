@@ -6,6 +6,7 @@ class Order extends React.Component {
         const burger = this.props.burgers[item];
         const count = this.props.order[item];
         const isAvailable = burger && burger.status === 'available';
+        if(!burger) return;
         if (!isAvailable) return <li key={item} className='unavailable'>`Извените, бургер не доступен`</li>
         return <li key={item}>
                 <span>
