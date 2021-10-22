@@ -4,12 +4,27 @@ import Order from "./components/Order";
 import MenuAdmin from "./components/MenuAdmin";
 import sampleBurgers from "./sample-burgers";
 import BurgersList from "./components/BurgersList";
+import base from "./Base";
 
 class App extends Component {
     state = {
         burgers: {},
         order: {}
     };
+
+    componentDidMount() {
+        const {params} = this.props.match;
+        this.ref = base.syncState(`${params.restURL}/burgers`, {
+            context: this,
+            state: 'burgers'
+        })
+    }
+
+    componentWillUnmount() {
+
+        base.removeBinding(this.ref)
+    }
+
     addBurger = (burger) => {
         const burgers = {...this.state.burgers};
         burgers[`burger${Date.now()}`] = burger;
