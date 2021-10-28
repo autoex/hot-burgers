@@ -40,9 +40,15 @@ class App extends Component {
         burgers[`burger${Date.now()}`] = burger;
         this.setState({burgers})
     };
-    updateBurger = (key, burger)=> {
+    updateBurger = (key, burger) => {
         const burgers = {...this.state.burgers};
         burgers[key] = burger;
+        this.setState({burgers});
+
+    };
+    deleteBurger = (key) => {
+        const burgers = {...this.state.burgers};
+        burgers[key] = null;
         this.setState({burgers});
 
     };
@@ -54,6 +60,11 @@ class App extends Component {
 
 
     };
+    deleteFromOrder = (key) => {
+        const order = {...this.state.order};
+        delete order[key];
+        this.setState({order});
+    };
 
     render() {
         return (
@@ -64,8 +75,13 @@ class App extends Component {
                 </div>
                 <Order burgers={this.state.burgers}
                        order={this.state.order}
+                       deleteFromOrder={this.deleteFromOrder}
                 />
-                <MenuAdmin addBurger={this.addBurger} addAllBurgers={this.addAllBurgers} burgers={this.state.burgers} updateBurger={this.updateBurger}/>
+                <MenuAdmin addBurger={this.addBurger}
+                           addAllBurgers={this.addAllBurgers}
+                           burgers={this.state.burgers}
+                           updateBurger={this.updateBurger}
+                           deleteBurger={this.deleteBurger}/>
 
             </div>
         );

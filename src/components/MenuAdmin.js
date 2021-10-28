@@ -8,9 +8,10 @@ class MenuAdmin extends React.Component {
             <div className='menu-admin'>
                 <h2>Управление меню</h2>
                 {Object.keys(this.props.burgers).map(key => <EditBurgerForm key={key}
-                                                                            burgerKey ={key}
+                                                                            idx ={key}
                                                                             burger={this.props.burgers[key]}
-                                                                            updateBurger={this.props.updateBurger}/>)}
+                                                                            updateBurger={this.props.updateBurger}
+                                                                            deleteBurger={this.props.deleteBurger} />)}
                 <AddBurgerForm addBurger={this.props.addBurger}/>
                 <button onClick={this.props.addAllBurgers}>Загрузить бургеры</button>
 

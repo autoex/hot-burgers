@@ -7,13 +7,13 @@ class Order extends React.Component {
         const count = this.props.order[item];
         const isAvailable = burger && burger.status === 'available';
         if(!burger) return;
-        if (!isAvailable) return <li key={item} className='unavailable'>`Извените, бургер не доступен`</li>
+        if (!isAvailable) return <li key={item} className='unavailable'>`Извените, бургер не доступен`</li>;
         return <li key={item}>
                 <span>
                     <span>{count} шт. </span>
                     <span>{burger.name} </span>
                     <span>{burger.price * count} ₽</span>
-                    <button className='cancelItem'>&times; </button>
+                    <button onClick={()=>this.props.deleteFromOrder(item)} className='cancelItem'>&times; </button>
                 </span></li>
     };
 
