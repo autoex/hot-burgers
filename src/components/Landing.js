@@ -35,7 +35,7 @@ class Landing extends Component {
                              onClick={this.displayList}>
                             {this.state.title ? this.state.title : `Выбери ресторан`}
                         </div>
-                        <div className="arrow_picker">
+                        <div className="arrow_picker" onClick={this.displayList}>
                             <div className="arrow_picker-up"></div>
                             <div className="arrow_picker-down"></div>
                         </div>

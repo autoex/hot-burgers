@@ -40,6 +40,12 @@ class App extends Component {
         burgers[`burger${Date.now()}`] = burger;
         this.setState({burgers})
     };
+    updateBurger = (key, burger)=> {
+        const burgers = {...this.state.burgers};
+        burgers[key] = burger;
+        this.setState({burgers});
+
+    };
     addAllBurgers = () => this.setState({burgers: {...this.state.burgers, ...sampleBurgers}});
     addToOrder = (key) => {
         const order = {...this.state.order};
@@ -47,7 +53,7 @@ class App extends Component {
         this.setState({...this.state, order});
 
 
-    }
+    };
 
     render() {
         return (
@@ -59,7 +65,7 @@ class App extends Component {
                 <Order burgers={this.state.burgers}
                        order={this.state.order}
                 />
-                <MenuAdmin addBurger={this.addBurger} addAllBurgers={this.addAllBurgers}/>
+                <MenuAdmin addBurger={this.addBurger} addAllBurgers={this.addAllBurgers} burgers={this.state.burgers} updateBurger={this.updateBurger}/>
 
             </div>
         );
