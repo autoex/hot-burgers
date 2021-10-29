@@ -1,5 +1,6 @@
-import firebase from "firebase";
-import Rebase from 're-base'
+import firebase from "firebase/app";
+import Rebase from 're-base';
+import 'firebase/database'
 
 
 export const firebaseApp = firebase.initializeApp({
