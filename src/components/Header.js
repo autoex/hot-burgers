@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
-const Header=()=> (
+
+const Header=({title})=> (
         <header className="top">
             <div className="wrap">
                 <div className="header-content">
@@ -8,7 +10,7 @@ const Header=()=> (
                         <div className="header-rating_tag">Рейтинг:</div>
                         <div className="header-rating_icon">★★★★★</div>
                     </div>
-                    <div className="header-divider"></div>
+                    <div className="header-divider">{title}</div>
                     <h1 className="font-effect-fire-animation">Hot Burgers</h1>
                     <h3>
                             <span>
@@ -20,5 +22,7 @@ const Header=()=> (
         </header>
     );
 
-
+Header.propTypes = {
+    title: PropTypes.string
+};
 export default Header;

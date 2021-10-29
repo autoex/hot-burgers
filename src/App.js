@@ -5,13 +5,16 @@ import MenuAdmin from "./components/MenuAdmin";
 import sampleBurgers from "./sample-burgers";
 import BurgersList from "./components/BurgersList";
 import base from "./Base";
+import PropTypes from 'prop-types';
 
 class App extends Component {
     state = {
         burgers: {},
         order: {}
     };
-
+    static propTypes = {
+        match: PropTypes.object
+    };
     componentDidMount() {
         const {params} = this.props.match;
         const localstorageRef = localStorage.getItem(params.restURL);
@@ -70,7 +73,7 @@ class App extends Component {
         return (
             <div className='burger-paradise'>
                 <div className="menu">
-                    <Header/>
+                    <Header title={'Hot Burgers'}/>
                     <BurgersList burgers={this.state.burgers} addToOrder={this.addToOrder}/>
                 </div>
                 <Order burgers={this.state.burgers}

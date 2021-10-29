@@ -1,9 +1,25 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class EditBurgerForm extends Component {
+    static propTypes = {
+        burger: PropTypes.shape({
+            image:PropTypes.string,
+            name:PropTypes.string,
+            price:PropTypes.number,
+            desc:PropTypes.string,
+            status:PropTypes.string
+        }),
+        updateBurger: PropTypes.func,
+        deleteBurger: PropTypes.func,
+        idx: PropTypes.string
+
+    };
     handleChange =(e)=> {
 
-        const updateBurger = {...this.props.burger, [e.currentTarget.name]: e.currentTarget.value};
+        const updateBurger = {
+            ...this.props.burger,
+            [e.currentTarget.name]: e.currentTarget.name === 'price' ? +e.currentTarget.value || 0 : e.currentTarget.value};
         this.props.updateBurger(this.props.idx,updateBurger);
     };
     render() {
