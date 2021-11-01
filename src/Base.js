@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import Rebase from 're-base';
 import 'firebase/database'
+import 'firebase/auth'
 
 
 export const firebaseApp = firebase.initializeApp({
